@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="homeScene" extends="Scene">
+<script type="text/brightscript" uri="pkg:/components/homeScene.brs"/>
+
+<children>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</children>
+</component>
