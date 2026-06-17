@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="Customize" extends="Group">
+<script type="text/brightscript" uri="pkg:/components/Customize.brs"/>
+
+<children>
+    <Label
+        id="QuestionLabel"
+        text="Hello World"
+        visible="true"
+    />
+
+    <ButtonGroup
+        id = "AnswerButtons"
+        translation = "[0,0]"
+        visible = "true"
+        textFont = "MediumSystemFont"
+    />
+
+</children>
+
+</component>

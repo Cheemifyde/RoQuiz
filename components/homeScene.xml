@@ -2,20 +2,41 @@
 <component name="homeScene" extends="Scene">
 <script type="text/brightscript" uri="pkg:/components/homeScene.brs"/>
 
+
 <children>
 
+    <Poster
+      translation="[0, 0]"
+      uri="pkg:/images/bg.jpg"
+      id="background"
+      visible = "true" 
+      />
 
 
+    <ButtonGroup id = "CustomizeandTutorialGroup" layoutDirection = "vert" minWidth = "500" itemSpacings = "[50]" translation ="[0,0]">
+        <Button
+            id = "CustomizeButton"
+            text = ""
+            height = "175"
+            focusedIconUri = ""
+            iconUri = "pkg:/images/customizebg.webp"
+            focusBitmapUri = "pkg:/images/customizeselect.webp"
+            visible = "true"
+        />
 
+        <Button
+            id = "TutorialButton"
+            text = ""
+            focusedIconUri = ""
+            height = "175"
+            iconUri = "pkg:/images/tutorialbg.webp"
+            focusBitmapUri = "pkg:/images/tutorialselect.webp"
+            visible = "true"
+        />
 
-
-
-
-
-
-
-
-
+    </ButtonGroup>
 
 </children>
+
+
 </component>
