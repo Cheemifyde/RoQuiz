@@ -5,8 +5,14 @@
 <children>
     <Label
         id="QuestionLabel"
-        text="Hello World"
+        text = "Questions"
         visible="true"
+    />
+
+    <Label
+        id="AnswerLabel"
+        text = ""
+        visible = "false"
     />
 
     <ButtonGroup
@@ -14,6 +20,12 @@
         translation = "[0,0]"
         visible = "true"
         textFont = "MediumSystemFont"
+    />
+    <Poster
+        translation="[0, 0]"
+        id="background"
+        visible = "true"
+
     />
 
 </children>
