@@ -10,6 +10,10 @@ sub init()
     m.TutorialPoster.width = m.scrWidth
     m.TutorialPoster.height = m.scrHeight
 
+    m.rokuimg = m.top.findNode("rokuimg")
+    m.rokuAnim = m.top.findNode("rokuAnim")
+    m.rokuAnim.control = "start"
+
     m.buttonGroup = m.top.findNode("CustomizeandTutorialGroup")
     m.buttonGroup.translation = [m.scrWidth*0.3, m.scrHeight*0.4]
     m.buttonGroup.setFocus(true)
@@ -51,6 +55,8 @@ sub Hide()
     m.buttonGroup.setFocus(false)
     m.buttonGroup.visible = false
     m.TutorialPoster.visible = false
+    m.rokuAnim.control = "stop"
+    m.rokuimg.visible = false
     m.homeAudio.control = "stop"
 end sub
 

@@ -10,12 +10,11 @@ sub init()
     m.QuestionLabel.horizAlign = "center"
     m.QuestionLabel.translation = [0,100]
     
-    'm.rokuimg = m.top.findNode("rokuimg")
-    'm.rokuAnim = m.top.findNode("rokuAnim")
-    'm.rokuAnim.control = "start"
+   
     
     m.AnswerLabel = m.top.findNode("AnswerLabel")
     m.AnswerLabel.width = m.scrWidth
+    m.answerLabel.horizAlign = "center"
     m.AnswerLabel.translation = [0, m.scrHeight*0.5]
 
     m.answerGroup = m.top.findNode("AnswerButtons")
