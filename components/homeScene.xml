@@ -4,6 +4,18 @@
 
 
 <children>
+   <Poster id = "splashscreenImage"
+        uri = "pkg:/images/rokuimg.webp"
+        width = "1920" height = "1080"
+        translation = "[0,0]"
+        visible = "true" >
+   
+        <Animation id = "bounceAnimation" duration = "3" repeat = "false" easeFunction = "Linear">
+            <FloatFieldInterpolator 
+                 key="opacity"
+                 keyValue = "[1,0]" />
+        </Animation>
+     </Poster>
 
     <Poster
       translation="[0, 0]"
@@ -11,6 +23,7 @@
       id="background"
       visible = "true" 
       />
+      
 
 
     <ButtonGroup id = "CustomizeandTutorialGroup" layoutDirection = "vert" minWidth = "500" itemSpacings = "[50]" translation ="[0,0]">
@@ -36,23 +49,7 @@
 
     </ButtonGroup>
 
-     <Poster
-            id="rokuimg"
-            uri="pkg:/images/rokuimg.webp"
-            width="600" height="200"
-            translation="[0,0]"/>
-            <Animation
-                id="rokuAnim"
-                duration="1"
-                repeat="false"
-                startOffset="1.0"
-                easeFunction="linear">
-                <Vector2DFieldInterpolator
-                    fieldToInterp="rokuimg.translation"
-                    key="[0.0, 0.20, 0.40, 0.60, 0.80, 1.0]"
-                    keyValue="[[0,235], [260,235], [645,0], [645,530], [0,530], [90,10]]" />
-            </Animation>
-
+     
 </children>
 
 

@@ -8,9 +8,7 @@ sub init()
     m.QuestionLabel = m.top.findNode("QuestionLabel")
     m.QuestionLabel.width = m.scrWidth 
     m.QuestionLabel.horizAlign = "center"
-    m.QuestionLabel.translation = [0,100]
-    
-   
+    m.QuestionLabel.translation = [0,100]  
     
     m.AnswerLabel = m.top.findNode("AnswerLabel")
     m.AnswerLabel.width = m.scrWidth
@@ -32,19 +30,19 @@ sub init()
 
     m.superMaples = CreateObject("roSGNode", "Font")
     m.superMaples.uri = "pkg:/fonts/SuperMaples.ttf"
-    m.superMaples.size = 50
+    m.superMaples.size = 37
 
     m.funnyTomato = CreateObject("roSGNode", "Font")
     m.funnyTomato.uri = "pkg:/fonts/FunnyTomato.ttf"
-    m.funnyTomato.size = 50
+    m.funnyTomato.size = 37
 
     m.sunnyStar = CreateObject("roSGNode", "Font")
     m.sunnyStar.uri = "pkg:/fonts/SunnyStar.ttf"
-    m.sunnyStar.size = 50
+    m.sunnyStar.size = 37
 
     m.gameBattles = CreateObject("roSGNode", "Font")
     m.gameBattles.uri = "pkg:/fonts/GameBattles.ttf"
-    m.gameBattles.size = 50
+    m.gameBattles.size = 23
 
 
     m.QuestionList = CreateObject("roList")
@@ -56,10 +54,13 @@ sub init()
 
     'Customization starts here'
 
-    m.QuizAudioContent.url = "https://audio.jukehost.co.uk/019ecc42-a0f5-734e-bb6d-82ff21521e38"
+    m.QuizAudioContent.url = "https://audio.jukehost.co.uk/019ef073-e905-7097-b200-bb8d45f7d463"
     m.QuizAudio.content = m.QuizAudioContent
     m.QuizAudio.control = "play"
     m.QuizAudio.loop = true
+
+    m.wrongaudioContent.url = "https://audio.jukehost.co.uk/H588HhEwAED259prYV3fCzkgrtujmP1v"
+    m.wrongaudio.content = m.wrongaudioContent
 
     m.QuestionList.AddTail("What is the capital of France?")
     m.AnswersList.AddTail("Paris")
@@ -78,8 +79,11 @@ sub init()
         ["The Bible", "The Great Gatsby", "To Kill a Mockingbird", "The Lord of the Rings"]
     ]
 
-    m.QuestionLabel.font = m.sunnyStar
-    m.AnswerLabel.font = m.sunnyStar
+    'Remove the apostrophe on every line to change the font!
+    'm.QuestionLabel.font = m.funnyTomato
+    'm.AnswerLabel.font = m.sunnyStar
+    'm.answerGroup.textFont = m.superMaples
+    'm.answerGroup.focusedTextFont = m.gameBattles
 
 
     'Customization ends here'
@@ -95,20 +99,20 @@ end sub
 
 sub onButtonSelected()
 
-    m.answerGroup.setFocus(false)
-    m.answerGroup.visible = false
     m.QuestionLabel.text = "Press OK to continue"
-    m.AnswerLabel.visible = true
     m.answerGroup.minWidth = 500.0
     selectedIndex = m.answerGroup.buttonSelected
     selectedContent = m.answerGroup.buttons[selectedIndex]
 
     if selectedContent = m.AnswersList[m.index]
-        m.AnswerLabel.text = "Correct!"
+        m.answerGroup.setFocus(false)
+        m.answerGroup.focusFootprintBitmapUri= "pkg:/images/Correct.webp"
         m.score = m.score + 1
+    
     else
-        m.AnswerLabel.text = "Incorrect! The correct answer is: " + m.AnswersList[m.index]
+        m.answerGroup.setFocus(false)
         m.wrongaudio.control = "play"
+        m.answerGroup.focusFootprintBitmapUri= "pkg:/images/Incorrect.webp"
 
     end if
 
@@ -136,8 +140,10 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
             else
                 m.QuestionLabel.text = "Quiz completed!"
                 m.answerGroup.visible = false
+                m.answerLabel.visible = true
                 m.AnswerLabel.text = "Your score is: " +  m.score.ToStr() + "/" + m.QuestionList.Count().ToStr()
             end if
+
             
         end if
     end if

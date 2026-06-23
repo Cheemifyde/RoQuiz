@@ -7,12 +7,14 @@
         id="QuestionLabel"
         text = "Questions"
         visible="true"
+        textFont = "MediumSystemFont"
     />
 
     <Label
         id="AnswerLabel"
         text = ""
         visible = "false"
+        textFont = "MediumSystemFont"
     />
 
     <ButtonGroup

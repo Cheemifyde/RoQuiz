@@ -20,4 +20,6 @@ mm_icon_focus_sd=pkg:/images/test.png
 ###  Splash Screen + Loading Screen Artwork 
 #### Image sizes are FHD: 1920x1080px | HD: 1280x720px | SD: 720x480px
 mm_icon_focus_hd=pkg:/images/test1.png
-splash_screen_hd=pkg:/images/SplashScreen.jpg
+splash_screen_hd=pkg:/images/mm_icon_focus_hd.png
+splash_screen_sd=pkg:/images/mm_icon_focus_sd.png
+splash_color=#062365
