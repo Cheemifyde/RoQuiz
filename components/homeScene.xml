@@ -4,15 +4,17 @@
 
 
 <children>
-   
+  <splash_screen
+      id="splash_screen"
+      visible="true"
+      translation="[0,0]" />
 
     <Poster
       translation="[0, 0]"
-      uri="pkg:/images/bg.jpg"
+      uri="pkg:/images/background.png"
       id="background"
-      visible = "true" 
+      visible = "false" 
       />
-      
 
 
     <ButtonGroup id = "CustomizeandTutorialGroup" layoutDirection = "vert" minWidth = "500" itemSpacings = "[50]" translation ="[0,0]">
@@ -23,7 +25,7 @@
             focusedIconUri = ""
             iconUri = "pkg:/images/customizebg.webp"
             focusBitmapUri = "pkg:/images/customizeselect.webp"
-            visible = "true"
+            visible = "false"
         />
 
         <Button
@@ -33,7 +35,7 @@
             height = "175"
             iconUri = "pkg:/images/tutorialbg.webp"
             focusBitmapUri = "pkg:/images/tutorialselect.webp"
-            visible = "true"
+            visible = "false"
         />
 
     </ButtonGroup>

@@ -5,16 +5,19 @@ sub init()
     deviceInfo = createObject("roDeviceInfo")
     m.scrWidth = deviceInfo.getDisplaySize().w
     m.scrHeight = deviceInfo.getDisplaySize().h
+    
 
     'Background, will be changed by Ethan
+    m.splash_screen = m.top.findNode("splash_screen")
+    m.splash_screen.observeField("splash_finished", "onSplashFinished")
+    m.splash_screen.setFocus(true)
+   
     m.TutorialPoster = m.top.findNode("background")
     m.TutorialPoster.width = m.scrWidth
     m.TutorialPoster.height = m.scrHeight
 
-
     m.buttonGroup = m.top.findNode("CustomizeandTutorialGroup")
     m.buttonGroup.translation = [m.scrWidth*0.3, m.scrHeight*0.4]
-    m.buttonGroup.setFocus(true)
     
     m.CustomizeButton = m.top.findNode("CustomizeButton")
     m.CustomizeButton.observeField("buttonSelected", "CustomizeSelected")
@@ -31,6 +34,19 @@ sub init()
     m.homeAudio.loop = true
 
 
+end sub
+
+sub onSplashFinished(obj)
+	if m.splash_screen.getField("splash_finished") = "finished" then
+		m.splash_video = m.splash_screen.findNode("splash_video")
+		m.splash_video.visible = false
+		m.splash_screen.visible = false
+		m.TutorialPoster.visible = true
+        m.buttonGroup.visible = true
+        m.TutorialButton.visible = true
+        m.CustomizeButton.visible = true
+		m.buttonGroup.setFocus(true)
+	end if
 end sub
 
 function onKeyEvent(key as String, press as Boolean) as Boolean

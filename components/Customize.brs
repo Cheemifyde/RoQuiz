@@ -4,6 +4,8 @@ sub init()
     m.scrWidth = deviceInfo.getDisplaySize().w
     m.scrHeight = deviceInfo.getDisplaySize().h
 
+    
+
     m.TutorialPoster = m.top.findNode("background")
     m.TutorialPoster.width = m.scrWidth
     m.TutorialPoster.height = m.scrHeight
