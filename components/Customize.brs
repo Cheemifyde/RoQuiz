@@ -4,9 +4,9 @@ sub init()
     m.scrWidth = deviceInfo.getDisplaySize().w
     m.scrHeight = deviceInfo.getDisplaySize().h
 
-    m.TutorialPoster = m.top.findNode("background")
-    m.TutorialPoster.width = m.scrWidth
-    m.TutorialPoster.height = m.scrHeight
+    m.Background = m.top.findNode("background")
+    m.Background.width = m.scrWidth
+    m.Background.height = m.scrHeight
 
     m.QuestionLabel = m.top.findNode("QuestionLabel")
     m.QuestionLabel.width = m.scrWidth 
@@ -19,12 +19,13 @@ sub init()
     m.AnswerLabel.translation = [0, m.scrHeight*0.5]
 
     m.answerGroup = m.top.findNode("AnswerButtons")
-    m.answerGroup.minWidth = 500.0
+    m.answerGroup.minWidth = 400.0
+        
     m.answerGroup.translation = [(m.scrWidth - m.answerGroup.minWidth)/ 2, m.scrHeight*0.3]
+
     m.answerGroup.setFocus(true)
     m.answerGroup.observeField("buttonSelected","onButtonSelected")
 
-    
     m.wrongaudio = createObject("roSGNode", "Audio")
     m.wrongaudioContent = createObject("RoSGNode", "ContentNode")
     m.wrongaudioContent.url = "https://audio.jukehost.co.uk/H588HhEwAED259prYV3fCzkgrtujmP1v"
@@ -34,6 +35,10 @@ sub init()
     m.superMaples = CreateObject("roSGNode", "Font")
     m.superMaples.uri = "pkg:/fonts/SuperMaples.ttf"
     m.superMaples.size = 37
+
+    m.bold = CreateObject("roSGNode", "Font")
+    m.bold.uri = "pkg:/fonts/Bold.ttf"
+    m.bold.size = 150
 
     m.funnyTomato = CreateObject("roSGNode", "Font")
     m.funnyTomato.uri = "pkg:/fonts/FunnyTomato.ttf"
@@ -53,14 +58,25 @@ sub init()
 
     m.QuizAudio = createObject("roSGNode", "Audio")
     m.QuizAudioContent = createObject("RoSGNode", "ContentNode")
-    
+    m.QuizAudio.control = "play"
+    m.QuizAudio.loop = true
+                          
+    homeScene = m.top.getScene()
 
     'Customization starts here'
 
+    if homeScene <> invalid 
+        m.titleLabel = homeScene.findNode("title")
+        if m.titleLabel <> invalid
+            m.titleLabel.text = "Mentors" 'change the content within the quotes to change the title of your app
+            m.titleLabel.font = m.bold 'you can change the font of the title here'
+        end if
+    end if
+
+    m.Background.uri = "pkg:/images/GradientPink.png" 'change background image for the homescreen here'
+
     m.QuizAudioContent.url = "https://audio.jukehost.co.uk/019ef073-e905-7097-b200-bb8d45f7d463"
     m.QuizAudio.content = m.QuizAudioContent
-    m.QuizAudio.control = "play"
-    m.QuizAudio.loop = true
 
     m.wrongaudioContent.url = "https://audio.jukehost.co.uk/H588HhEwAED259prYV3fCzkgrtujmP1v"
     m.wrongaudio.content = m.wrongaudioContent
@@ -97,13 +113,40 @@ sub init()
 
     m.score = 0
 
+    m.titleLabel.width = m.scrWidth 
+    m.titleLabel.horizAlign = "center"
+
+    for each button in m.answerGroup.getChildren(-1, 0)
+        if button.isSubtype("Button")
+            button.showScrollingText = true
+        end if
+    end for
+
+    if m.Background.uri = "pkg:/images/Default.png"
+        m.answerGroup.focusBitmapUri = "pkg:/images/purpleButtons.png"
+        m.answerGroup.iconUri = "pkg:/images/icon.webp"
+        m.answerGroup.focusedIconUri = "pkg:/images/icon.webp"
+    else if m.Background.uri = "pkg:/images/GradientBlue.png"
+        m.answerGroup.focusBitmapUri = "pkg:/images/blueButtons.png"
+        m.answerGroup.iconUri = "pkg:/images/blueIcon.png"
+        m.answerGroup.focusedIconUri = "pkg:/images/blueIcon.png"
+    else if m.Background.uri = "pkg:/images/GradientPink.png"
+        m.answerGroup.focusBitmapUri = "pkg:/images/pinkButtons.png"
+        m.answerGroup.iconUri = "pkg:/images/pinkIcon.webp"
+        m.answerGroup.focusedIconUri = "pkg:/images/pinkIcon.webp"
+    else if m.Background.uri = "pkg:/images/GradientOrange.png"
+        m.answerGroup.focusBitmapUri = "pkg:/images/orangeButtons.png"
+        m.answerGroup.iconUri = "pkg:/images/oraIcon.webp"
+        m.answerGroup.focusedIconUri = "pkg:/images/oraIcon.webp"
+    end if
+
 
 end sub
 
 sub onButtonSelected()
 
     m.QuestionLabel.text = "Press OK to continue"
-    m.answerGroup.minWidth = 500.0
+    m.answerGroup.minWidth = m.scrWidth/4
     selectedIndex = m.answerGroup.buttonSelected
     selectedContent = m.answerGroup.buttons[selectedIndex]
 
@@ -137,7 +180,7 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
                 m.QuestionLabel.text = m.QuestionList[m.index]
                 m.answerGroup.buttons = m.choicesBank[m.index]
                 m.answerGroup.setFocus(true)
-                m.answerGroup.minWidth = 500.0
+                m.answerGroup.minWidth = m.scrWidth/4
                 m.answerGroup.visible = true
                 m.AnswerLabel.visible = false
             else

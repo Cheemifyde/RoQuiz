@@ -8,11 +8,17 @@
 
     <Poster
       translation="[0, 0]"
-      uri="pkg:/images/bg.jpg"
+      uri="pkg:/images/bg.webp"
       id="background"
       visible = "true" 
       />
-      
+
+    <Label
+      id = "title"
+      text = "RoQuiz"
+      visible = "true"
+      translation = "[0,85]"
+    />
 
 
     <ButtonGroup id = "CustomizeandTutorialGroup" layoutDirection = "vert" minWidth = "500" itemSpacings = "[50]" translation ="[0,0]">

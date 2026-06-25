@@ -5,10 +5,10 @@
 <children>
     <Poster
         translation="[0, 0]"
-        uri="pkg:/images/GradientOrange.png"
         id="background"
         visible = "true" 
          />
+    
     <Label
         id="QuestionLabel"
         text = "Questions"
@@ -25,6 +25,13 @@
         textFont = "MediumSystemFont"
     />
 
+    
+    <Poster
+        translation="[0, 0]"
+        id="background"
+        visible = "true"
+    />
+   
     <ButtonGroup
         id = "AnswerButtons"
         visible = "true"
@@ -33,15 +40,7 @@
         focusBitmapUri = "https://b-o09.github.io/host/focused.png"
         textFont = "MediumSystemFont"
     />
-    <Poster
-        translation="[0, 0]"
-        id="background"
-        visible = "true"
-
-    />
-    
-
-
+   
 </children>
 
 </component>

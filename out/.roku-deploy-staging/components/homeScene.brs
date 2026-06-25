@@ -30,6 +30,15 @@ sub init()
     m.homeAudio.control = "play"
     m.homeAudio.loop = true
 
+    m.bold = CreateObject("roSGNode", "Font")
+    m.bold.uri = "pkg:/fonts/Bold.ttf"
+    m.bold.size = 150
+
+    m.TitleLabel = m.top.findNode("title")
+    m.TitleLabel.font = m.bold 
+    m.TitleLabel.width = m.scrWidth 
+    m.TitleLabel.horizAlign = "center"
+
 
 end sub
 
