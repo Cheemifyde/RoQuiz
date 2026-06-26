@@ -4,11 +4,9 @@
 
 
 <children>
-   
-
     <Poster
       translation="[0, 0]"
-      uri="pkg:/images/bg.webp"
+      uri="pkg:/images/homeBackground.png"
       id="background"
       visible = "true" 
       />
@@ -21,30 +19,42 @@
     />
 
 
-    <ButtonGroup id = "CustomizeandTutorialGroup" layoutDirection = "vert" minWidth = "500" itemSpacings = "[50]" translation ="[0,0]">
+    <ButtonGroup id = "homeButtonGroup" layoutDirection = "vert" minWidth = "500" itemSpacings = "[50]" translation ="[0,0]">
         <Button
-            id = "CustomizeButton"
+            id = "customizeButton"
             text = ""
             height = "175"
             focusedIconUri = ""
-            iconUri = "pkg:/images/customizebg.webp"
-            focusBitmapUri = "pkg:/images/customizeselect.webp"
+            iconUri = "pkg:/images/customizeUnselected.png"
+            focusBitmapUri = "pkg:/images/customizeSelected.png"
             visible = "true"
         />
 
         <Button
-            id = "TutorialButton"
+            id = "tutorialButton"
             text = ""
             focusedIconUri = ""
             height = "175"
-            iconUri = "pkg:/images/tutorialbg.webp"
-            focusBitmapUri = "pkg:/images/tutorialselect.webp"
+            iconUri = "pkg:/images/tutorialUnselected.png"
+            focusBitmapUri = "pkg:/images/tutorialSelected.png"
             visible = "true"
         />
 
     </ButtonGroup>
 
-     
+        <Poster
+        id = "qrCode"
+        uri = "pkg:/images/qrCode.png"
+   />
+    <Label
+        id = "tutorialLabel"
+        text = "Scan the QR code to view the tutorial"
+        visible = "false"
+        textFont = "LargeSystemFont"
+        color = "#FFFFFF"
+    />
+
+
 </children>
 
 

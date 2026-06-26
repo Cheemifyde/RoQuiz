@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="Customize" extends="Group">
-<script type="text/brightscript" uri="pkg:/components/Customize.brs"/>
+<component name="customizeScreen" extends="Group">
+<script type="text/brightscript" uri="pkg:/components/customizeScreen.brs"/>
 
 <children>
     <Poster
@@ -10,7 +10,7 @@
          />
     
     <Label
-        id="QuestionLabel"
+        id="questionLabel"
         text = "Questions"
         visible="true"
         textFont = "MediumSystemFont"
@@ -19,7 +19,7 @@
     />
 
     <Label
-        id="AnswerLabel"
+        id="answerLabel"
         text = ""
         visible = "false"
         textFont = "MediumSystemFont"
@@ -33,7 +33,7 @@
     />
    
     <ButtonGroup
-        id = "AnswerButtons"
+        id = "answerButtonGroup"
         visible = "true"
         iconUri = "https://b-o09.github.io/host/capy.png"
         focusedIconUri = "https://b-o09.github.io/host/capy.png"
