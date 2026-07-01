@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="customizeScreen" extends="Group">
+<script type="text/brightscript" uri="pkg:/components/customizeScreen.brs"/>
+
+<children>
+    <Poster
+        translation="[0, 0]"
+        id="background"
+        visible = "true" 
+         />
+    
+    <Label
+        id="questionLabel"
+        text = "Questions"
+        visible="true"
+        textFont = "MediumSystemFont"
+        color = "#000000"
+        
+    />
+    
+
+    <Label
+        id="answerLabel"
+        text = ""
+        visible = "false"
+        textFont = "MediumSystemFont"
+        fontSize = "40"
+    />
+
+    
+    <Poster
+        translation="[0, 0]"
+        id="background"
+        visible = "true"
+    />
+
+    <Poster
+        id="QuizPic"
+        visible = "true"
+    />
+   
+    <ButtonGroup
+        id = "answerButtonGroup"
+        visible = "true"
+        iconUri = ""
+        focusedIconUri = ""
+        focusBitmapUri = "https://b-o09.github.io/host/focused.png"
+        textFont = "MediumSystemFont"
+        buttonHeight = "[83]"
+        itemSpacings = "[20]"
+    
+    />
+
+
+ 
+    <Animation id="confettiAnimation" duration="10.0" repeat="false" easeFunction="linear">
+      <Vector2DFieldInterpolator 
+        key="[0.0, 0.8]" 
+        keyValue="[[0, -300], [0, 900]]" 
+        fieldToInterp="confetti1.translation"
+      />
+
+      <Vector2DFieldInterpolator 
+        key="[0.09, 0.8]" 
+        keyValue="[[0, -1100], [0, 920]]" 
+        fieldToInterp="confetti2.translation"
+      />
+
+    </Animation>
+
+    <Poster id="confetti1"
+      uri="pkg:/images/confetti.png"
+      visible="false"
+    />
+
+    <Poster id="confetti2"
+      uri="pkg:/images/confetti.png"
+      visible="false"
+    />
+   
+</children>
+
+</component>
