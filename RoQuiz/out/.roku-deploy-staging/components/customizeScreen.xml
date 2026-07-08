@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="customizeScreen" extends="Group">
+<script type="text/brightscript" uri="pkg:/components/customizeScreen.brs"/>
+
+<interface>
+    <function name="stopQuizAudio" />
+</interface>
+
+<children>
+    <Poster
+        translation="[0, 0]"
+        id="background"
+        visible = "true" 
+         />
+    
+    <Label
+        id="questionLabel"
+        text = "Questions"
+        visible="true"
+        textFont = "MediumSystemFont"
+        color = "#000000"
+        
+    />
+    
+
+    <Label
+        id="answerLabel"
+        text = ""
+        visible = "false"
+        textFont = "MediumSystemFont"
+        fontSize = "40"
+    />
+
+    <Label
+        id="tryAgainLabel"
+        text = "Try Again!"
+        visible = "false"
+        textFont = "MediumSystemFont"
+        fontSize = "52"
+        color = "#FF0000"
+    />
+
+    
+    <Poster
+        translation="[0, 0]"
+        id="background"
+        visible = "true"
+    />
+
+    <Poster
+        id="QuizPic"
+        visible = "true"
+    />
+   
+    <ButtonGroup
+        id = "answerButtonGroup"
+        visible = "true"
+        iconUri = ""
+        focusediconUri = ""
+        textFont = "MediumSystemFont"
+        textColor = "#FFFFFF"
+        focusedTextColor = "#000000"
+        buttonHeight = "[83]"
+        itemSpacings = "[20]"
+    
+    />
+
+
+ 
+    <Animation id="confettiAnimation" duration="10.0" repeat="false" easeFunction="linear">
+      <Vector2DFieldInterpolator 
+        key="[0.0, 0.8]" 
+        keyValue="[[0, -300], [0, 900]]" 
+        fieldToInterp="confetti1.translation"
+      />
+
+      <Vector2DFieldInterpolator 
+        key="[0.09, 0.8]" 
+        keyValue="[[0, -1100], [0, 920]]" 
+        fieldToInterp="confetti2.translation"
+      />
+
+    </Animation>
+
+    <Animation id="tryAgainBounce" duration="1.2" repeat="true" easeFunction="linear">
+      <Vector2DFieldInterpolator
+        key="[0.0, 0.25, 0.5, 0.75, 1.0]"
+        keyValue="[[1.0, 1.0], [1.18, 0.82], [0.95, 1.08], [1.08, 0.94], [1.0, 1.0]]"
+        fieldToInterp="tryAgainLabel.scale"
+      />
+    </Animation>
+
+    <Poster id="confetti1"
+      uri="https://raw.githubusercontent.com/Cheemifyde/RoQuiz/refs/heads/master/images/confetti.png"
+      visible="false"
+    />
+
+    <Poster id="confetti2"
+      uri="https://raw.githubusercontent.com/Cheemifyde/RoQuiz/refs/heads/master/images/confetti.png"
+      visible="false"
+    />
+   
+</children>
+
+</component>
