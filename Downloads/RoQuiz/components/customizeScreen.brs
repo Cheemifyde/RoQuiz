@@ -114,15 +114,15 @@ sub init()
 
 
     'Right aligned button group
-    m.answerButtonGroup.translation = [(m.scrWidth - m.answerButtonGroup.minWidth) * 0.825, m.scrHeight*0.3]
+    'm.answerButtonGroup.translation = [(m.scrWidth - m.answerButtonGroup.minWidth) * 0.825, m.scrHeight*0.3]
 
     'Left aligned button group
     'm.answerButtonGroup.translation = [(m.scrWidth - m.answerButtonGroup.minWidth) * 0.17, m.scrHeight*0.33]  
 
     'Middle aligned button group - images not recommended
-    'm.answerButtonGroup.translation = [(m.scrWidth - m.answerButtonGroup.minwidth)/2, m.scrHeight*0.3]
+    m.answerButtonGroup.translation = [(m.scrWidth - m.answerButtonGroup.minwidth)/2, m.scrHeight*0.3]
 
-    m.background.uri = "pkg:/images/blueGradient.png" 'change background image for the homescreen here'
+    m.background.uri = "pkg:/images/customizeBackground.png" 'change background image for the quiz screen here'
 
     m.quizAudioContent.url = "https://audio.jukehost.co.uk/019ef073-e905-7097-b200-bb8d45f7d463"
     m.quizAudio.content = m.quizAudioContent
@@ -168,25 +168,25 @@ sub init()
 
     'Font customization
     'Use "MediumSystemFont" for Roku's default font, or use one of the custom font nodes above, like m.sunnyStar or m.superMaples.
-    m.questionTextFont = m.bouncyBalloons'question text inside the search bar
-    m.feedbackTextFont = m.sunnyStar'correct answer text after a wrong answer
-    m.continueTextFont = m.sunnyStar '"Press OK to continue" text
-    m.completedTextFont = m.superMaples'"Quiz completed!" text
-    m.scoreTextFont = m.bold 'final score text
-    m.tryAgainTextFont = m.bouncyBalloons'"Try Again!" text
-    m.answerButtonTextFont = m.sunnyStar 'unfocused answer button text
-    m.answerButtonFocusedTextFont = m.sunnyStar 'focused answer button text
+    m.questionTextFont = "MediumSystemFont"'question text inside the search bar
+    m.feedbackTextFont = "MediumSystemFont"'correct answer text after a wrong answer
+    m.continueTextFont = "MediumSystemFont" '"Press OK to continue" text
+    m.completedTextFont = "MediumSystemFont"'"Quiz completed!" text
+    m.scoreTextFont = "MediumSystemFont" 'final score text
+    m.tryAgainTextFont = "MediumSystemFont"'"Try Again!" text
+    m.answerButtonTextFont = "MediumSystemFont" 'unfocused answer button text
+    m.answerButtonFocusedTextFont = "MediumSystemFont" 'focused answer button text
 
 
     'You can adjust the text size here
-    m.questionTextSize = 22 
+    m.questionTextSize = 34 
     m.feedbackTextSize = 32 
     m.continueTextSize = 28 
-    m.completedTextSize = 60 
+    m.completedTextSize = 48 
     m.scoreTextSize = 60 
     m.tryAgainTextSize = 50 
     m.titleTextSize = 150 
-    m.answerButtonTextSize = 40 
+    m.answerButtonTextSize = 32 
 
     
     'Customization ends here'
@@ -249,7 +249,6 @@ sub applyLabelFont(label, fontSetting, size)
 
     fontType = Type(fontSetting)
     if fontType = "String" or fontType = "roString"
-        label.font = invalid
         label.textFont = fontSetting
         label.fontSize = size
     else
@@ -294,10 +293,22 @@ function getCenteredLabelX(labelWidth as Float) as Float
     return (m.scrWidth - labelWidth) / 2
 end function
 
+function isMiddleAnswerAlignment() as Boolean
+    return m.answerButtonGroup.translation[0] = (m.scrWidth - m.answerButtonGroup.minwidth)/2 and m.answerButtonGroup.translation[1] = m.scrHeight*0.3
+end function
+
+function getSearchLabelX(labelWidth as Float) as Float
+    if isMiddleAnswerAlignment()
+        return getCenteredLabelX(labelWidth)
+    end if
+
+    return m.scrWidth * 0.27
+end function
+
 sub setQuestionLabelText(text as String)
     m.questionLabel.width = m.scrWidth * 0.57
     m.questionLabel.height = m.scrHeight * 0.13
-    m.questionLabel.translation = [m.scrWidth * 0.27,m.scrHeight * 0.087]
+    m.questionLabel.translation = [getSearchLabelX(m.questionLabel.width),m.scrHeight * 0.087]
     m.questionLabel.maxLines = 1
     m.questionLabel.visible = true
     m.continueLabel.visible = false
@@ -309,7 +320,7 @@ end sub
 sub setQuestionFeedbackText(text as String)
     m.questionLabel.width = m.scrWidth * 0.57
     m.questionLabel.height = m.scrHeight * 0.08
-    m.questionLabel.translation = [m.scrWidth * 0.27,m.scrHeight * 0.078]
+    m.questionLabel.translation = [getSearchLabelX(m.questionLabel.width),m.scrHeight * 0.078]
     m.questionLabel.maxLines = 1
 
     applyLabelFont(m.questionLabel, m.feedbackTextFont, m.feedbackTextSize)
@@ -320,7 +331,7 @@ end sub
 sub setContinueLabelText(text as String)
     m.continueLabel.width = m.scrWidth * 0.57
     m.continueLabel.height = m.scrHeight * 0.06
-    m.continueLabel.translation = [m.scrWidth * 0.27,m.scrHeight * 0.158]
+    m.continueLabel.translation = [getSearchLabelX(m.continueLabel.width),m.scrHeight * 0.158]
     m.continueLabel.horizAlign = "center"
     m.continueLabel.vertAlign = "center"
     m.continueLabel.visible = true
@@ -333,7 +344,7 @@ sub setCenteredContinueLabelText(text as String)
     m.questionLabel.visible = false
     m.continueLabel.width = m.scrWidth * 0.57
     m.continueLabel.height = m.scrHeight * 0.13
-    m.continueLabel.translation = [m.scrWidth * 0.27,m.scrHeight * 0.087]
+    m.continueLabel.translation = [getSearchLabelX(m.continueLabel.width),m.scrHeight * 0.087]
     m.continueLabel.horizAlign = "center"
     m.continueLabel.vertAlign = "center"
     m.continueLabel.visible = true
